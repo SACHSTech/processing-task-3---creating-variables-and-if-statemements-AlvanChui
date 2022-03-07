@@ -1,55 +1,39 @@
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
-	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+
   public void settings() {
-	// put your size call here
-    size(600, 600);
+    size(500, 500);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
   public void setup() {
     background(random(255), random(255), random(255));
+    
   }
+ 
+  float x = random(width);
+  float y = random(height);
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
   public void draw() {
-	  
-	// sample code, delete this stuff
-    int x = (int)random(600);
-  int y = (int)random(600);
   int colorR;
   int colorG;
   int colorB;
-  if (x <= width / 3 && y <= height  / 3)
-  {
+  if (x < width / 2 && y < height  / 3) {
     colorR = 127;
     colorG = 255;
     colorB = 255;
   }
-  else if (x >= width / 3 && y <= height / 3)
-  {
+  else if (x >= width /2 && y < height / 3) {
     colorR = 255;
     colorG = 255;
     colorB = 127;
   }
-  else if (x <= width / 3 && y >= height / 3)
-  {
+  else if (x < width / 2 && y >= height / 3) {
     colorR = 255;
     colorG = 127;
     colorB = 255;
   }
-  else
-  {
+  else {
     colorR = 255;
     colorG = 255;
     colorB = 255;
@@ -64,11 +48,11 @@ public class Sketch extends PApplet {
   rect(x - width / 150,y + height * 17 / 60, width / 75, height / 60);
   fill(0,0,0);
   rect(x - width / 150, y + height / 3, width / 75, height / 60);
-  fill(150,150,150);
+  fill((255 - colorR) * 3/2, (255 - colorG) * 3/2, (255 - colorB) * 3/2);
   ellipse(x - width / 20, y - height / 40, width / 40, height / 40);
-  fill(150,150,150);
+  fill((255 - colorR) * 3/2, (255 - colorG) * 3/2, (255 - colorB) * 3/2);
   ellipse(x + width / 20, y - height / 40, width / 40, height / 40);
-  fill(255 - colorR, 255 - colorG, 255 - colorB);
+  fill((255 - colorR) * 2, (255 - colorG) * 2, (255 - colorB) * 2);
   triangle(x - width/6, y - height / 12, x + width / 6, y- height / 12, x, y - height * 11 / 60);
   }
 }
